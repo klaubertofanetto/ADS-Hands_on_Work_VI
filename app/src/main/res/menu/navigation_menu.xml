@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bandas"
+        android:icon="@drawable/icon_band"
+        android:title="@string/bandas"
+        />
+
+    <item
+        android:id="@+id/discos"
+        android:icon="@drawable/vinyl_icon"
+        android:title="@string/discos"/>
+
+    <item
+        android:id="@+id/colecao"
+        android:icon="@drawable/add"
+        android:title="@string/addToCollection"/>
+
+    <item
+        android:id="@+id/configuracoes"
+        android:icon="@drawable/settings"
+        android:title="@string/configuracoes"/>
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logout"
+        android:title="@string/logout"/>
+
+</menu>

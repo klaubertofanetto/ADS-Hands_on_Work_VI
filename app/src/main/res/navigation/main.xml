@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/colecao">
+
+    <fragment
+        android:id="@+id/bandas"
+        android:name="com.example.how_vi.bandas.BandasFragment"
+        android:label="Bandas"
+        tools:layout="@layout/fragment_bandas" />
+    <fragment
+        android:id="@+id/discos"
+        android:name="com.example.how_vi.discos.DiscosFragment"
+        android:label="Discos"
+        tools:layout="@layout/fragment_discos" />
+    <fragment
+        android:id="@+id/colecao"
+        android:name="com.example.how_vi.colecao.ColecaoFragment"
+        android:label="Coleção"
+        tools:layout="@layout/fragment_colecao" />
+</navigation>
