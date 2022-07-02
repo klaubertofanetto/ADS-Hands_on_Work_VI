@@ -40,31 +40,44 @@
             android:textColor="@color/mainBlue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHeight="wrap_content"
             />
 
         <TextView
             android:id="@+id/tvListarDiscoNome"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/mainBlue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvListarDiscoBandaNome"
-            app:layout_constraintHeight="wrap_content"
             />
 
         <TextView
-            android:id="@+id/tvListarDiscoAno"
-            android:layout_width="match_parent"
+            android:id="@+id/tvListar_abre_parenteses"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/mainBlue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHeight="wrap_content"
-            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@id/tvListarDiscoNome"
+            app:layout_constraintBottom_toBottomOf="@id/tvListarDiscoNome"
+            android:text=" ("/>
+        <TextView
+            android:id="@+id/tvListarDiscoAno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/mainBlue"
+            app:layout_constraintStart_toEndOf="@id/tvListar_abre_parenteses"
+            app:layout_constraintBottom_toBottomOf="@id/tvListarDiscoNome"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/mainBlue"
+            app:layout_constraintStart_toEndOf="@id/tvListarDiscoAno"
+            app:layout_constraintBottom_toBottomOf="@id/tvListarDiscoNome"
+            android:text=")"/>
 
         <ImageView
             android:layout_width="32dp"
