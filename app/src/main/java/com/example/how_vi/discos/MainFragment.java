@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 import com.example.how_vi.R;
 
-public class DiscosFragment extends Fragment {
+public class MainFragment extends Fragment {
 
 
-    public DiscosFragment() {
+    public MainFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,14 @@ public class DiscosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.disco_fragment_main, container, false);
+
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_discos, new ListarFragment()).commit();
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_discos, container, false);
+        return v;
     }
 }

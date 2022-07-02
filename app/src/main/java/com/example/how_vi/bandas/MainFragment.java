@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 
 import com.example.how_vi.R;
 
-public class BandasFragment extends Fragment {
+public class MainFragment extends Fragment {
 
-    public BandasFragment() {
+
+    public MainFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,13 @@ public class BandasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.banda_fragment_main, container, false);
+
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_bandas, new ListarFragment()).commit();
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bandas, container, false);
+        return v;
     }
 }

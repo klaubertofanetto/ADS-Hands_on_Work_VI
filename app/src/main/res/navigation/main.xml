@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/bandas"
-        android:name="com.example.how_vi.bandas.BandasFragment"
+        android:name="com.example.how_vi.bandas.MainFragment"
         android:label="Bandas"
-        tools:layout="@layout/fragment_bandas" />
+        tools:layout="@layout/banda_fragment_main" />
     <fragment
         android:id="@+id/discos"
-        android:name="com.example.how_vi.discos.DiscosFragment"
+        android:name="com.example.how_vi.discos.MainFragment"
         android:label="Discos"
-        tools:layout="@layout/fragment_discos" />
+        tools:layout="@layout/disco_fragment_main" />
     <fragment
         android:id="@+id/colecao"
         android:name="com.example.how_vi.colecao.ColecaoFragment"

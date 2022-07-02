@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/frame_colecao"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".colecao.ColecaoFragment"
+    tools:context=".discos.ListarFragment"
     android:background="@color/lightBlue">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/minha_colecao"
+            android:text="Discos"
             android:padding="20dp"
             android:layout_gravity="center_horizontal"
             android:textSize="24sp"
@@ -25,13 +24,12 @@
             />
 
         <ListView
-            android:id="@+id/listview_minha_colecao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:id="@+id/listview_discos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginHorizontal="15dp"
             android:divider="@color/lightBlue"
-            android:dividerHeight="10dp">
+            android:dividerHeight="12dp">
         </ListView>
 
     </LinearLayout>
@@ -41,9 +39,8 @@
         android:layout_height="match_parent">
 
         <Button
-
-            android:id="@+id/adicionar_a_colecao"
-            android:contentDescription="@string/adicionar_a_colecao_description"
+            android:id="@+id/adicionarDisco"
+            android:contentDescription="Adicionar disco"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@drawable/add_button"
@@ -57,5 +54,4 @@
             android:layout_margin="35dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>
