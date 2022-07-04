@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import androidx.core.widget.TintableCheckedTextView;
-
 import com.example.how_vi.R;
 import com.example.how_vi.bandas.Banda;
 import com.example.how_vi.discos.Disco;
@@ -40,6 +38,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_BANDA);
         db.execSQL(CREATE_TABLE_COLECAO);
         db.execSQL(CREATE_TABLE_USUARIO);
+        db.execSQL(beforeDeleteBandaTrigger());
+        db.execSQL(beforeDeleteDiscoTrigger());
     }
 
     @Override
@@ -48,6 +48,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         for (String tabela : tabelas) {
             db.execSQL(dropTableCommand(tabela));
         }
+        db.execSQL("DROP TRIGGER BANDA_BD");
+        db.execSQL("DROP TRIGGER DISCO_BD");
         onCreate(db);
     }
 
@@ -83,6 +85,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         StringBuilder str = new StringBuilder();
         str.append("DROP TABLE IF EXISTS ");
         str.append(table);
+        return str.toString();
+    }
+
+    private static String beforeDeleteBandaTrigger(){
+        StringBuilder str = new StringBuilder();
+        str.append("CREATE TRIGGER IF NOT EXISTS BANDA_BD ");
+        str.append("BEFORE DELETE ");
+        str.append("ON[banda] for each row ");
+        str.append("BEGIN ");
+        str.append("DELETE FROM disco where id_banda = old._id ");
+        str.append("END; ");
+
+        return str.toString();
+    }
+
+    private static String beforeDeleteDiscoTrigger(){
+        StringBuilder str = new StringBuilder();
+        str.append("CREATE TRIGGER IF NOT EXISTS DISCO_BD ");
+        str.append("BEFORE DELETE ");
+        str.append("ON[disco] for each row ");
+        str.append("BEGIN ");
+        str.append("DELETE FROM colecao where id_disco = old._id ");
+        str.append("END; ");
+
         return str.toString();
     }
 
