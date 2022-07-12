@@ -20,5 +20,8 @@
     <string name="selecione_a_banda">Selecione a banda</string>
     <string name="ano_de_lancamento">Ano de lançamento:</string>
     <string name="disco">Disco:</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

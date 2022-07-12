@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.example.how_vi.R;
+import com.example.how_vi.Usuario.Usuario;
 import com.example.how_vi.bandas.Banda;
 import com.example.how_vi.discos.Disco;
 
@@ -88,7 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return str.toString();
     }
 
-    private static String beforeDeleteBandaTrigger(){
+    private static String beforeDeleteBandaTrigger() {
         StringBuilder str = new StringBuilder();
         str.append("CREATE TRIGGER IF NOT EXISTS BANDA_BD ");
         str.append("BEFORE DELETE ");
@@ -100,7 +101,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return str.toString();
     }
 
-    private static String beforeDeleteDiscoTrigger(){
+    private static String beforeDeleteDiscoTrigger() {
         StringBuilder str = new StringBuilder();
         str.append("CREATE TRIGGER IF NOT EXISTS DISCO_BD ");
         str.append("BEFORE DELETE ");
@@ -229,8 +230,102 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         data.close();
         db.close();
         return disco;
-
-        /* FIM CRUD DISCO */
-
     }
+
+    /* FIM CRUD DISCO */
+
+    /* INICIO CRUD USUÁRIO */
+    public long createUsuario(Usuario usuario) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("nome", usuario.getNome());
+        cv.put("email", usuario.getEmail());
+        cv.put("senha", usuario.getSenha());
+        long id = db.insert(TABLE_USUARIO, null, cv);
+        db.close();
+        return id;
+    }
+
+    public long updateUsuario (Usuario usuario) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("nome", usuario.getNome());
+        cv.put("email", usuario.getEmail());
+        cv.put("senha", usuario.getSenha());
+        long affected = db.update(TABLE_USUARIO, cv, "_id = ?", new String[]{String.valueOf(usuario.getId())});
+        return affected;
+    }
+
+    public long deleteUsuario(Usuario usuario) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long affected = db.delete(TABLE_USUARIO, "_id=?", new String[]{String.valueOf(usuario.getId())});
+        db.close();
+        return affected;
+    }
+
+    public Usuario getUsuarioById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"_id", "nome", "email", "senha"};
+        String[] args = {String.valueOf(id)};
+        Cursor data = db.query(TABLE_USUARIO, columns, "_id = ?", args, null, null, null);
+        data.moveToFirst();
+        Usuario usuario = new Usuario();
+        usuario.setId(data.getInt(0));
+        usuario.setNome(data.getString(1));
+        usuario.setEmail(data.getString(2));
+        usuario.setSenha(data.getString(3));
+        data.close();
+        db.close();
+        return usuario;
+    }
+
+    public boolean getUsuarioByNome(String nome) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"_id"};
+        String[] args = {String.valueOf(nome)};
+        Cursor data = db.query(TABLE_USUARIO, columns, "nome = ?", args, null, null, null);
+        try{
+            return data.moveToFirst();
+        } finally {
+            data.close();
+            db.close();
+        }
+    }
+
+    public boolean getUsuarioByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"_id"};
+        String[] args = {String.valueOf(email)};
+        Cursor data = db.query(TABLE_USUARIO, columns, "email = ?", args, null, null, null);
+        try {
+            return data.moveToFirst();
+        } finally {
+            data.close();
+            db.close();
+        }
+    }
+
+    public Usuario buscaLogin(String login, String senha){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"_id", "nome", "email", "senha"};
+        String[] args = {String.valueOf(login), String.valueOf(login), String.valueOf(senha)};
+        Cursor data = db.query(TABLE_USUARIO, columns, "( nome = ? OR email = ? ) AND senha = ?", args, null, null, null);
+        Usuario usuario = new Usuario();
+        if (data.moveToFirst()){
+            usuario.setId(data.getInt(0));
+            usuario.setNome(data.getString(1));
+            usuario.setEmail(data.getString(2));
+            usuario.setSenha(data.getString(3));
+        } else {
+            usuario.setId(0);
+        }
+        data.close();
+        db.close();
+        return usuario;
+    }
+
+
+    /* FIM CRUD USUÁRIO */
+
 }
+

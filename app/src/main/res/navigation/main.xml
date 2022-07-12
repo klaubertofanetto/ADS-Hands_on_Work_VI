@@ -19,5 +19,7 @@
         android:id="@+id/colecao"
         android:name="com.example.how_vi.colecao.ColecaoFragment"
         android:label="Coleção"
-        tools:layout="@layout/fragment_colecao" />
+        tools:layout="@layout/colecao_fragment_listar" />
+
+
 </navigation>
