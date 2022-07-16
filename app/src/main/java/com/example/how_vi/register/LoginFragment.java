@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.how_vi.MainActivity;
 import com.example.how_vi.R;
@@ -72,7 +73,11 @@ public class LoginFragment extends Fragment {
             ((Usuario) getActivity().getApplication()).setId(usuario.getId());
             ((Usuario) getActivity().getApplication()).setNome(usuario.getNome());
             ((Usuario) getActivity().getApplication()).setEmail(usuario.getEmail());
+            etUsuario.setText("");
+            etSenha.setText("");
             openMainActivity();
+        } else {
+            Toast.makeText(getContext(), "Usuário ou senha incorretos", Toast.LENGTH_SHORT).show();
         }
     }
 

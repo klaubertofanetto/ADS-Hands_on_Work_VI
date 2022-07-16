@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/frame_colecao"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".colecao.ColecaoFragment"
+    tools:context=".colecao.ListarFragment"
     android:background="@color/lightBlue">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
@@ -26,12 +25,11 @@
 
         <ListView
             android:id="@+id/listview_minha_colecao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginHorizontal="15dp"
             android:divider="@color/lightBlue"
-            android:dividerHeight="10dp">
+            android:dividerHeight="12dp">
         </ListView>
 
     </LinearLayout>

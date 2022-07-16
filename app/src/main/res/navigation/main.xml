@@ -17,9 +17,9 @@
         tools:layout="@layout/disco_fragment_main" />
     <fragment
         android:id="@+id/colecao"
-        android:name="com.example.how_vi.colecao.ColecaoFragment"
+        android:name="com.example.how_vi.colecao.MainFragment"
         android:label="Coleção"
-        tools:layout="@layout/colecao_fragment_listar" />
+        tools:layout="@layout/colecao_fragment_main" />
 
 
 </navigation>

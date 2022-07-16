@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.example.how_vi.R;
 import com.example.how_vi.Usuario.Usuario;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "lp_collection";
-    private static final int VERSAO_BANCO = 7;
+    private static final int VERSAO_BANCO = 1;
     private static final String TABLE_DISCO = "disco";
     private static final String TABLE_BANDA = "banda";
     private static final String TABLE_COLECAO = "colecao";
@@ -95,8 +96,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         str.append("BEFORE DELETE ");
         str.append("ON[banda] for each row ");
         str.append("BEGIN ");
-        str.append("DELETE FROM disco where id_banda = old._id ");
-        str.append("END; ");
+        str.append("DELETE FROM disco where id_banda = old._id; ");
+        str.append("END ");
 
         return str.toString();
     }
@@ -107,8 +108,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         str.append("BEFORE DELETE ");
         str.append("ON[disco] for each row ");
         str.append("BEGIN ");
-        str.append("DELETE FROM colecao where id_disco = old._id ");
-        str.append("END; ");
+        str.append("DELETE FROM colecao where id_disco = old._id; ");
+        str.append("END ");
 
         return str.toString();
     }
@@ -206,7 +207,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void getAllDiscos(Context context, ListView lv) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {"_id", "nome", "ano_lancamento", "id_banda", "nomeBanda"};
-        // Cursor data = db.query(TABLE_DISCO, columns, null, null, null, null, "nome");
         String query = "SELECT disco._id, disco.nome, disco.ano_lancamento, disco.id_banda, banda.nomeBanda FROM disco INNER JOIN banda on banda._id = disco.id_banda";
         Cursor data = db.rawQuery(query, null);
         int[] to = {R.id.tvListarDiscoId, R.id.tvListarDiscoNome, R.id.tvListarDiscoAno, R.id.tvListarDiscoBandaId, R.id.tvListarDiscoBandaNome};
@@ -230,6 +230,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         data.close();
         db.close();
         return disco;
+    }
+
+    public void getDiscosForSpinner(ArrayList<Integer> listDiscoId, ArrayList<String> listDisco) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT disco._id, disco.nome, banda.nomeBanda FROM disco INNER JOIN banda on banda._id = disco.id_banda";
+        Cursor data = db.rawQuery(query, null);
+        while (data.moveToNext()) {
+            int idColumnIndex = data.getColumnIndex("_id");
+            listDiscoId.add(Integer.parseInt(data.getString(idColumnIndex)));
+            int discoColumnIndex = data.getColumnIndex("nome");
+            int bandaColumnIndex = data.getColumnIndex("nomeBanda");
+            String discoInfo = data.getString(bandaColumnIndex) + " | " + data.getString(discoColumnIndex);
+            listDisco.add(discoInfo);
+        }
     }
 
     /* FIM CRUD DISCO */
@@ -283,7 +297,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {"_id"};
         String[] args = {String.valueOf(nome)};
-        Cursor data = db.query(TABLE_USUARIO, columns, "nome = ?", args, null, null, null);
+        Cursor data = db.query(TABLE_USUARIO, columns, "nome = ? COLLATE NOCASE", args, null, null, null);
         try{
             return data.moveToFirst();
         } finally {
@@ -296,7 +310,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {"_id"};
         String[] args = {String.valueOf(email)};
-        Cursor data = db.query(TABLE_USUARIO, columns, "email = ?", args, null, null, null);
+        Cursor data = db.query(TABLE_USUARIO, columns, "email = ? COLLATE NOCASE", args, null, null, null);
         try {
             return data.moveToFirst();
         } finally {
@@ -309,7 +323,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {"_id", "nome", "email", "senha"};
         String[] args = {String.valueOf(login), String.valueOf(login), String.valueOf(senha)};
-        Cursor data = db.query(TABLE_USUARIO, columns, "( nome = ? OR email = ? ) AND senha = ?", args, null, null, null);
+        Cursor data = db.query(TABLE_USUARIO, columns, "( nome = ? COLLATE NOCASE OR email = ? COLLATE NOCASE) AND senha = ?", args, null, null, null);
         Usuario usuario = new Usuario();
         if (data.moveToFirst()){
             usuario.setId(data.getInt(0));
@@ -323,9 +337,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return usuario;
     }
-
-
     /* FIM CRUD USUÁRIO */
 
+    /* INÍCIO CRUD COLEÇÃO */
+
+    public void getAllDiscosFromColecao(Context context, ListView lv, int idUsuario) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"_id", "nome", "ano_lancamento", "id_banda", "nomeBanda"};
+        String query = "SELECT colecao._id, disco.nome, disco.ano_lancamento, disco.id_banda, banda.nomeBanda FROM disco " + //
+                        "INNER JOIN banda on banda._id = disco.id_banda " + //
+                        "INNER JOIN colecao on colecao.id_disco = disco._id WHERE colecao.id_usuario = " + Integer.toString(idUsuario) ;
+        Cursor data = db.rawQuery(query, null);
+        int[] to = {R.id.tvListarColecaoId, R.id.tvListarColecaoDiscoNome, R.id.tvListarColecaoDiscoAno, R.id.tvListarColecaoBandaId, R.id.tvListarColecaoBandaNome};
+        SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(context, R.layout.colecao_item_list_view, data, columns, to, 0);
+        lv.setAdapter(simpleCursorAdapter);
+        db.close();
+    }
+
+    public long insertInColecao(int id_usuario, int id_disco){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("id_usuario", id_usuario);
+        cv.put("id_disco", id_disco);
+        long id = db.insert(TABLE_COLECAO, null, cv);
+        db.close();
+        return id;
+    }
+
+    public long deleteFromColecao(String id_colecao){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long affected = db.delete(TABLE_COLECAO, "_id=?", new String[]{id_colecao});
+        db.close();
+        return affected;
+    }
+
+    /* FIM CRUD COLEÇÃO */
 }
 

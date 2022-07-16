@@ -34,6 +34,11 @@ public class AdicionarFragment extends Fragment {
     public AdicionarFragment() {}
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.disco_fragment_adicionar, container, false);
