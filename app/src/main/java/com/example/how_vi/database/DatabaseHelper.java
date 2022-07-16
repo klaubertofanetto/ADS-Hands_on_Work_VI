@@ -265,9 +265,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("nome", usuario.getNome());
         cv.put("email", usuario.getEmail());
-        cv.put("senha", usuario.getSenha());
         long affected = db.update(TABLE_USUARIO, cv, "_id = ?", new String[]{String.valueOf(usuario.getId())});
+        db.close();
         return affected;
+    }
+
+    public boolean isSenhaValida(int id, String senha) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"_id", "senha"};
+        String[] args = {String.valueOf(id), senha};
+        Cursor data = db.query(TABLE_USUARIO, columns, "_id = ? AND senha = ?", args, null, null, null);
+        try{
+            if (data.moveToFirst()){
+                return true;
+            }
+            return false;
+        } finally {
+            db.close();
+            data.close();
+        }
+
     }
 
     public long deleteUsuario(Usuario usuario) {

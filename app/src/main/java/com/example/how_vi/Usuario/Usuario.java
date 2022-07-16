@@ -41,4 +41,11 @@ public class Usuario extends Application {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void clear(){
+        this.id = 0;
+        this.nome = "";
+        this.email = "";
+        this.senha = "";
+    }
 }

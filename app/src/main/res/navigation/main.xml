@@ -20,6 +20,15 @@
         android:name="com.example.how_vi.colecao.MainFragment"
         android:label="Coleção"
         tools:layout="@layout/colecao_fragment_main" />
+    <fragment
+        android:id="@+id/logout"
+        android:name="com.example.how_vi.LogoutFragment"
+        android:label="Logout" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.how_vi.Usuario.MainFragment"
+        android:label="Coleção"
+        tools:layout="@layout/usuario_fragment_main" />
 
 
 </navigation>

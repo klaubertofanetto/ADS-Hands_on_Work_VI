@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Usuario.EditarFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_editar_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="Seus dados"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/edit_text_nome_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edit_text_email_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"/>
+
+            <EditText
+                android:id="@+id/edit_text_senha_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Digite sua senha"
+                android:inputType="textPassword"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+                <Button
+                    android:id="@+id/button_cancelar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/cancelar" />
+                <Button
+                    android:id="@+id/button_editar_usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/editar" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>

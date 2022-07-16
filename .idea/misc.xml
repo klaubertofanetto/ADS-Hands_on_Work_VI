@@ -30,6 +30,9 @@
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/layout/layout_navigation_header.xml" value="0.3515625" />
+        <entry key="app/src/main/res/layout/logout_fragment_main.xml" value="0.17916666666666667" />
+        <entry key="app/src/main/res/layout/usuario_fragment_editar.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/usuario_fragment_main.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/menu/navigation_menu.xml" value="0.3515625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3425" />
       </map>

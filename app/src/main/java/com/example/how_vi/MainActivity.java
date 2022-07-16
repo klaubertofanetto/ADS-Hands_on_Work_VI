@@ -10,7 +10,9 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
+import com.example.how_vi.Usuario.Usuario;
 import com.example.how_vi.colecao.MainFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Usuario usuario=(Usuario)getApplicationContext();
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
@@ -32,10 +35,24 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null);
+        View header=navigationView.getHeaderView(0);
+        TextView nome = header.findViewById((R.id.user_name));
+        TextView email = header.findViewById((R.id.user_mail));
+        nome.setText(usuario.getNome());
+        email.setText(usuario.getEmail());
 
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
+//        View header=navigationView.getHeaderView(0);
+//        /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
+//        name = (TextView)header.findViewById(R.id.username);
+//        email = (TextView)header.findViewById(R.id.email);
+//        name.setText(personName);
+//        email.setText(personEmail);
 
     }
 }

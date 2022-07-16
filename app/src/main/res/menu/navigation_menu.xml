@@ -13,11 +13,11 @@
 
     <item
         android:id="@+id/colecao"
-        android:icon="@drawable/add"
+        android:icon="@drawable/colecao"
         android:title="@string/addToCollection"/>
 
     <item
-        android:id="@+id/configuracoes"
+        android:id="@+id/settings"
         android:icon="@drawable/settings"
         android:title="@string/configuracoes"/>
 
