@@ -48,7 +48,7 @@ public class AdicionarFragment extends Fragment {
         listaDiscoId = new ArrayList<Integer>();
         dbHelper = new DatabaseHelper(getActivity());
         dbHelper.getDiscosForSpinner(listaDiscoId, listaDisco);
-        listaDisco.add("Clique aqui para selecionar um disco");
+        listaDisco.add("Selecione um disco");
 
         ArrayAdapter<String> spDiscoArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listaDisco){
             @Override

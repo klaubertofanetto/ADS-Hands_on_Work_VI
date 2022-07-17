@@ -9,7 +9,7 @@
         <entry key="app/src/main/res/drawable/round_item.xml" value="0.353" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.34375" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.17916666666666667" />
-        <entry key="app/src/main/res/layout/banda_fragment_adicionar.xml" value="0.17916666666666667" />
+        <entry key="app/src/main/res/layout/banda_fragment_adicionar.xml" value="0.25" />
         <entry key="app/src/main/res/layout/banda_fragment_editar.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/layout/banda_fragment_listar.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/layout/banda_fragment_main.xml" value="0.17916666666666667" />
@@ -19,7 +19,7 @@
         <entry key="app/src/main/res/layout/colecao_fragment_main.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/layout/colecao_item_list_view.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/disco_fragment_adicionar.xml" value="0.35260416666666666" />
-        <entry key="app/src/main/res/layout/disco_fragment_editar.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/disco_fragment_editar.xml" value="0.22" />
         <entry key="app/src/main/res/layout/disco_fragment_listar.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/layout/disco_fragment_main.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/layout/disco_item_list_view.xml" value="0.35260416666666666" />

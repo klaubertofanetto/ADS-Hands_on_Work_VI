@@ -16,13 +16,15 @@
     <string name="editar">Editar</string>
     <string name="excluir">Excluir</string>
     <string name="selecione_a_banda">Selecione a banda</string>
-    <string name="ano_de_lancamento">Ano de lançamento:</string>
-    <string name="disco">Disco:</string>
+    <string name="ano_de_lancamento">Ano de lançamento</string>
+    <string name="disco">Disco</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cancelar">Cancelar</string>
+    <string name="digite_o_nome_da_banda">Digite o nome da banda</string>
+    <string name="banda">Banda</string>
+    <string name="digite_sua_senha">Digite sua senha</string>
 
 </resources>

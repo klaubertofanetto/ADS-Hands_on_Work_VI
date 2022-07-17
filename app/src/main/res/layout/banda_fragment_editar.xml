@@ -3,31 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightBlue"
     tools:context=".bandas.EditarFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="25dp"
+            android:background="@drawable/round_item"
+            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="center_vertical"
+            >
 
-            <TextView
-                android:id="@+id/text_view_editar_banda"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="@string/editar"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+
             <EditText
                 android:id="@+id/edit_text_nome_banda"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:textSize="18sp"
+                android:paddingVertical="14dp"
+                android:paddingHorizontal="12dp"
+                android:layout_marginVertical="15dp"
+                android:hint="@string/digite_o_nome_da_banda"
+                android:background="@drawable/round_edittext"
                 android:inputType="none"/>
 
             <LinearLayout
@@ -40,19 +40,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/editar" />
+                    android:text="@string/editar"
+                    android:layout_marginVertical="15dp"
+                    android:background="@drawable/round_item"/>
                 <Button
                     android:id="@+id/button_excluir_banda"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
-                    android:text="@string/excluir" />
+                    android:text="@string/excluir"
+                    android:layout_marginVertical="15dp"
+                    android:background="@drawable/round_item"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </ScrollView>
 
 </FrameLayout>

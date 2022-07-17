@@ -3,47 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightBlue"
     tools:context=".discos.AdicionarFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-            <TextView
-                android:id="@+id/text_view_adicionar_disco"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:padding="10dp"
-                android:textAlignment="center"
-                android:text="@string/adicionar" />
+            android:orientation="vertical"
+            android:padding="25dp"
+            android:background="@drawable/round_item"
+            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="center_vertical">
+
             <TextView
                 android:id="@+id/text_view_banda_disco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/selecione_a_banda"/>
+                android:textColor="@color/mainBlue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="3dp"
+                android:text="@string/banda"/>
             <Spinner
                 android:id="@+id/spinner_banda_disco"
+                android:theme="@style/mySpinnerStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="48dp"
+                android:background="@drawable/round_edittext"
+                />
 
             <TextView
                 android:id="@+id/text_view_nome_disco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textColor="@color/mainBlue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="3dp"
                 android:text="@string/disco"/>
             <EditText
                 android:id="@+id/edit_text_nome_disco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:textSize="18sp"
+                android:paddingVertical="14dp"
+                android:paddingHorizontal="12dp"
+                android:layout_marginBottom="15dp"
+                android:hint="Digite o nome do disco"
+                android:background="@drawable/round_edittext"
                 android:inputType="none"
                 />
 
@@ -52,12 +63,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textColor="@color/mainBlue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="3dp"
                 android:text="@string/ano_de_lancamento"/>
             <EditText
                 android:id="@+id/edit_text_ano_disco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:textSize="18sp"
+                android:paddingVertical="14dp"
+                android:paddingHorizontal="12dp"
+                android:layout_marginBottom="15dp"
+                android:hint="Digite o ano de lançamento"
+                android:background="@drawable/round_edittext"
                 android:inputType="number"
                 />
 
@@ -65,8 +86,9 @@
                 android:id="@+id/button_salvar_disco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:background="@drawable/round_item"
                 android:text="@string/salvar" />
 
         </LinearLayout>
-    </ScrollView>
 </FrameLayout>

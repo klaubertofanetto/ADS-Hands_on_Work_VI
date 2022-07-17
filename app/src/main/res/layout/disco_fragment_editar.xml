@@ -3,42 +3,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightBlue"
     tools:context=".discos.EditarFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/text_view_editar_disco"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="@string/editar"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            android:orientation="vertical"
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="30dp"
+            android:background="@drawable/round_item"
+            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="center_vertical">
+
             <Spinner
                 android:id="@+id/spinner_banda_disco"
+                android:theme="@style/mySpinnerStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="48dp"
+                android:background="@drawable/round_edittext" />
 
             <EditText
                 android:id="@+id/edit_text_nome_disco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:textSize="18sp"
+                android:paddingVertical="14dp"
+                android:paddingHorizontal="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:hint="Digite o nome do disco"
+                android:background="@drawable/round_edittext"
                 android:inputType="none"/>
             <EditText
                 android:id="@+id/edit_text_ano_disco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="none"/>
+                android:textSize="18sp"
+                android:paddingVertical="14dp"
+                android:paddingHorizontal="12dp"
+                android:layout_marginBottom="20dp"
+                android:hint="Digite o ano de lançamento"
+                android:background="@drawable/round_edittext"
+                android:inputType="number"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,6 +61,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
+                    android:background="@drawable/round_item"
                     android:text="@string/editar" />
                 <Button
                     android:id="@+id/button_excluir_disco"
@@ -57,12 +69,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
+                    android:background="@drawable/round_item"
                     android:text="@string/excluir" />
 
             </LinearLayout>
 
         </LinearLayout>
-
-    </ScrollView>
 
 </FrameLayout>

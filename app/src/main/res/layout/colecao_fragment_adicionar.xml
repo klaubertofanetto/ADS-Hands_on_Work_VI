@@ -3,28 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightBlue"
     tools:context=".colecao.AdicionarFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="25dp"
+            android:background="@drawable/round_item"
+            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="center_vertical">
             <Spinner
                 android:id="@+id/spinner_disco_colecao"
+                android:theme="@style/mySpinnerStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="48dp"
+                android:background="@drawable/round_edittext"
+                android:layout_marginVertical="15dp"/>
 
             <Button
                 android:id="@+id/button_salvar_colecao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:background="@drawable/round_item"
                 android:text="@string/salvar" />
 
         </LinearLayout>
-    </ScrollView>
+
 
 </FrameLayout>

@@ -50,7 +50,7 @@ public class AdicionarFragment extends Fragment {
         listBandaId = new ArrayList<>();
         listBandaNome = new ArrayList<>();
         dbhelper.getAllNameBanda(listBandaId, listBandaNome);
-        listBandaNome.add("Clique aqui para selecionar a banda");
+        listBandaNome.add("Selecione a banda");
 
         ArrayAdapter<String> spBandaArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listBandaNome){
             @Override
