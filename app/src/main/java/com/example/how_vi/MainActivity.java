@@ -43,16 +43,5 @@ public class MainActivity extends AppCompatActivity {
 
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-//        View header=navigationView.getHeaderView(0);
-//        /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
-//        name = (TextView)header.findViewById(R.id.username);
-//        email = (TextView)header.findViewById(R.id.email);
-//        name.setText(personName);
-//        email.setText(personEmail);
-
     }
 }

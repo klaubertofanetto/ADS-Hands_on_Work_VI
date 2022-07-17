@@ -50,9 +50,16 @@ public class AdicionarFragment extends Fragment {
         listBandaId = new ArrayList<>();
         listBandaNome = new ArrayList<>();
         dbhelper.getAllNameBanda(listBandaId, listBandaNome);
+        listBandaNome.add("Clique aqui para selecionar a banda");
 
-        ArrayAdapter<String> spBandaArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, listBandaNome);
+        ArrayAdapter<String> spBandaArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listBandaNome){
+            @Override
+            public int getCount() {
+                return listBandaNome.size()-1;
+            }
+        };
         spBanda.setAdapter(spBandaArrayAdapter);
+        spBanda.setSelection(listBandaNome.size()-1);
 
         Button btnSalvar = v.findViewById(R.id.button_salvar_disco);
         btnSalvar.setOnClickListener(new View.OnClickListener() {
@@ -70,20 +77,28 @@ public class AdicionarFragment extends Fragment {
         String nomeDisco = etNome.getText().toString();
         if (spBanda.getSelectedItem() == null) {
             Toast.makeText(getActivity(), "Por favor, selecione a banda", Toast.LENGTH_LONG).show();
+            return;
         } else if (nomeDisco.equals("")) {
             Toast.makeText(getActivity(), "Por favor, informe o nome do disco", Toast.LENGTH_LONG).show();
+            return;
         } else if (etAno.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Por favor, informe o ano de lançamento do disco", Toast.LENGTH_LONG).show();
-        } else {
-            Disco disco = new Disco();
-            String nomeBanda = spBanda.getSelectedItem().toString();
-            disco.setId_banda(listBandaId
-                    .get(listBandaNome.indexOf(nomeBanda)));
-            disco.setNome(nomeDisco);
-            disco.setAnoLancamento(Integer.parseInt(etAno.getText().toString()));
-            dbhelper.createDisco(disco);
-            Toast.makeText(getActivity(), "Disco salvo", Toast.LENGTH_LONG);
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_discos, new ListarFragment()).commit();
+            return;
         }
+
+        Disco disco = new Disco();
+        String nomeBanda = spBanda.getSelectedItem().toString();
+        disco.setId_banda(listBandaId
+                .get(listBandaNome.indexOf(nomeBanda)));
+        disco.setNome(nomeDisco);
+        disco.setAnoLancamento(Integer.parseInt(etAno.getText().toString()));
+        if (dbhelper.isDiscoRepetido(disco.getId_banda(), disco.getNome())){
+            Toast.makeText(getActivity(), nomeDisco+", do "+nomeBanda +", já existe na base de dados", Toast.LENGTH_LONG).show();
+            return;
+        }
+        dbhelper.createDisco(disco);
+        Toast.makeText(getActivity(), "Disco salvo", Toast.LENGTH_LONG);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_discos, new ListarFragment()).commit();
+
     }
 }

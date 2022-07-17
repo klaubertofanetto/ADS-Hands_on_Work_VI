@@ -33,23 +33,24 @@
             />
         <TextView
             android:id="@+id/tvListarDiscoBandaNome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/mainBlue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/tvListarDiscoNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/mainBlue"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvListarDiscoBandaNome"
+            app:layout_constraintTop_toBottomOf="@id/tvListarDiscoNome"
+            />
+
+        <TextView
+            android:id="@+id/tvListarDiscoNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="35dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/mainBlue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
 
         <TextView
@@ -58,8 +59,8 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/mainBlue"
-            app:layout_constraintStart_toEndOf="@id/tvListarDiscoNome"
-            app:layout_constraintBottom_toBottomOf="@id/tvListarDiscoNome"
+            app:layout_constraintStart_toEndOf="@id/tvListarDiscoBandaNome"
+            app:layout_constraintBottom_toBottomOf="@id/tvListarDiscoBandaNome"
             android:text=" ("/>
         <TextView
             android:id="@+id/tvListarDiscoAno"
@@ -68,7 +69,7 @@
             android:textSize="18sp"
             android:textColor="@color/mainBlue"
             app:layout_constraintStart_toEndOf="@id/tvListar_abre_parenteses"
-            app:layout_constraintBottom_toBottomOf="@id/tvListarDiscoNome"
+            app:layout_constraintBottom_toBottomOf="@id/tvListarDiscoBandaNome"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -76,7 +77,7 @@
             android:textSize="18sp"
             android:textColor="@color/mainBlue"
             app:layout_constraintStart_toEndOf="@id/tvListarDiscoAno"
-            app:layout_constraintBottom_toBottomOf="@id/tvListarDiscoNome"
+            app:layout_constraintBottom_toBottomOf="@id/tvListarDiscoBandaNome"
             android:text=")"/>
 
         <ImageView

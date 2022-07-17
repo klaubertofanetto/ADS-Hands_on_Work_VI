@@ -51,6 +51,10 @@ public class AdicionarFragment extends Fragment {
             return;
         }
         DatabaseHelper dbHelper = new DatabaseHelper(getActivity());
+        if (dbHelper.isBandaRepetida(banda)){
+            Toast.makeText(getActivity(), "Já existe uma banda cadastrada com o nome "+banda, Toast.LENGTH_LONG).show();
+            return;
+        }
         dbHelper.createBanda(banda);
         Toast.makeText(getActivity(), banda+ " salva na base de bandas", Toast.LENGTH_LONG).show();
 

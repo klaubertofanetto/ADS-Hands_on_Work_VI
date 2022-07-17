@@ -48,9 +48,16 @@ public class AdicionarFragment extends Fragment {
         listaDiscoId = new ArrayList<Integer>();
         dbHelper = new DatabaseHelper(getActivity());
         dbHelper.getDiscosForSpinner(listaDiscoId, listaDisco);
+        listaDisco.add("Clique aqui para selecionar um disco");
 
-        ArrayAdapter<String> spDiscoArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, listaDisco);
+        ArrayAdapter<String> spDiscoArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listaDisco){
+            @Override
+            public int getCount() {
+                return listaDisco.size()-1;
+            }
+        };
         spDisco.setAdapter(spDiscoArrayAdapter);
+        spDisco.setSelection(listaDisco.size()-1);
 
         Button btnSalvar = v.findViewById(R.id.button_salvar_colecao);
         btnSalvar.setOnClickListener(new View.OnClickListener() {
@@ -69,9 +76,12 @@ public class AdicionarFragment extends Fragment {
         int idUsuario = ((Usuario) getActivity().getApplication()).getId();
         String nomeDisco = spDisco.getSelectedItem().toString();
         int idDisco = listaDiscoId.get(listaDisco.indexOf(nomeDisco));
-
+        if (dbHelper.isDiscoNaColecao(idDisco,idUsuario)){
+            Toast.makeText(getActivity(), nomeDisco +" já está na sua coleção", Toast.LENGTH_LONG).show();
+            return;
+        }
         dbHelper.insertInColecao(idUsuario, idDisco);
-        Toast.makeText(getActivity(), nomeDisco +" salvo na sua coleção", Toast.LENGTH_LONG);
+        Toast.makeText(getActivity(), nomeDisco +" salvo na sua coleção", Toast.LENGTH_LONG).show();
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_colecao, new ListarFragment()).commit();
 
     }
